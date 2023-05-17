@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,41 +14,56 @@
 #
 
 # Set httpfs specific environment variables here.
-#
-# hadoop-env.sh is read prior to this file.
-#
 
-# HTTPFS config directory
+# Settings for the Embedded Tomcat that runs HttpFS
+# Java System properties for HttpFS should be specified in this variable
 #
-# export HTTPFS_CONFIG=${HADOOP_CONF_DIR}
+# export CATALINA_OPTS=
 
-# HTTPFS log directory
+# HttpFS logs directory
 #
-# export HTTPFS_LOG=${HADOOP_LOG_DIR}
+# export HTTPFS_LOG=${HTTPFS_HOME}/logs
 
-# HTTPFS temporary directory
+# HttpFS temporary directory
 #
-# export HTTPFS_TEMP=${HADOOP_HDFS_HOME}/temp
+# export HTTPFS_TEMP=${HTTPFS_HOME}/temp
 
-# The HTTP port used by HTTPFS
+# The HTTP port used by HttpFS
 #
 # export HTTPFS_HTTP_PORT=14000
 
-# The maximum number of HTTP handler threads
+# The Admin port used by HttpFS
 #
-# export HTTPFS_MAX_THREADS=1000
+# export HTTPFS_ADMIN_PORT=`expr ${HTTPFS_HTTP_PORT} + 1`
 
 # The hostname HttpFS server runs on
 #
-# export HTTPFS_HTTP_HOSTNAME=$(hostname -f)
+# export HTTPFS_HTTP_HOSTNAME=`hostname -f`
 
-# The maximum size of HTTP header
-#
-# export HTTPFS_MAX_HTTP_HEADER_SIZE=65536
-
-# Whether SSL is enabled
+# Indicates if HttpFS is using SSL
 #
 # export HTTPFS_SSL_ENABLED=false
+
+# Set to 'true' if you want the SSL stack to require a valid certificate chain
+# from the client before accepting a connection. Set to 'want' if you want the
+# SSL stack to request a client Certificate, but not fail if one isn't
+# presented. A 'false' value (which is the default) will not require a
+# certificate chain unless the client requests a resource protected by a
+# security constraint that uses CLIENT-CERT authentication.
+#
+# export HTTPFS_SSL_CLIENT_AUTH=false
+
+# The comma separated list of SSL protocols to support
+#
+# export HTTPFS_SSL_ENABLED_PROTOCOLS="TLSv1,TLSv1.1,TLSv1.2,SSLv2Hello"
+
+# The comma separated list of encryption ciphers for SSL
+#
+# export HTTPFS_SSL_CIPHERS=
+
+# The maximum size of Tomcat HTTP header
+#
+# export HTTPFS_MAX_HTTP_HEADER_SIZE=65536
 
 # The location of the SSL keystore if using SSL
 #
@@ -57,3 +72,9 @@
 # The password of the SSL keystore if using SSL
 #
 # export HTTPFS_SSL_KEYSTORE_PASS=password
+
+# The full path to any native libraries that need to be loaded
+# (For eg. location of natively compiled tomcat Apache portable
+# runtime (APR) libraries
+#
+# export JAVA_LIBRARY_PATH=${HOME}/lib/native
