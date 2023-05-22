@@ -105,7 +105,9 @@ echo "export ZOOKEEPER_HOME=/opt/zookeeper" >> ~/.bashrc
 
 # Actualización del PATH para incluir las rutas de las herramientas
 echo 'export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$HBASE_HOME/bin:$ZOOKEEPER_HOME/bin' >> ~/.bashrc
+echo 'export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"' >> ~/.bashrc
 # Recarga el perfil del usuario
+
 source ~/.bashrc
 fi
 

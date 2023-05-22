@@ -46,5 +46,13 @@
     <name>yarn.nodemanager.vmem-check-enabled</name>
     <value>false</value>
   </property>
+   <property>
+    <name>yarn.nodemanager.linux-container-executor.nonsecure-mode.local-user</name>
+    <value>%USER%</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.linux-container-executor.nonsecure-mode.limit-users</name>
+    <value>false</value>
+  </property>
 
 </configuration>

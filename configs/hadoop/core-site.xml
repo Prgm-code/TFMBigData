@@ -30,7 +30,7 @@
     <name>hadoop.proxyuser.jupyterhub.groups</name>
     <value>*</value>
   </property>
-    <property>
+  <property>
     <name>hadoop.proxyuser.alice.hosts</name>
     <value>*</value>
   </property>
@@ -38,7 +38,7 @@
     <name>hadoop.proxyuser.alice.groups</name>
     <value>*</value>
   </property>
-    <property>
+  <property>
     <name>hadoop.proxyuser.hadoop.hosts</name>
     <value>*</value>
   </property>
@@ -46,7 +46,7 @@
     <name>hadoop.proxyuser.hadoop.groups</name>
     <value>*</value>
   </property>
-    <property>
+  <property>
     <name>hadoop.proxyuser.carl.hosts</name>
     <value>*</value>
   </property>
@@ -54,7 +54,7 @@
     <name>hadoop.proxyuser.carl.groups</name>
     <value>*</value>
   </property>
-    <property>
+  <property>
     <name>hadoop.proxyuser.bob.hosts</name>
     <value>*</value>
   </property>
@@ -62,4 +62,12 @@
     <name>hadoop.proxyuser.bob.groups</name>
     <value>*</value>
   </property>
+
+  <property>
+    <name>hadoop.security.authentication</name>
+    <value>simple</value>
+  </property>
+
+  
+
 </configuration>

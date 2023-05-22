@@ -36,6 +36,9 @@
     <value>false</value>
     <description>Si está configurado como "true", HDFS habilita los permisos de acceso.</description>
   </property>
-
+  <property>
+    <name>dfs.webhdfs.enabled</name>
+    <value>true</value>
+  </property>
 
 </configuration>
