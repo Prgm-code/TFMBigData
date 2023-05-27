@@ -46,7 +46,7 @@ $MINICONDA_BIN_DIR/conda update -q conda
 $MINICONDA_BIN_DIR/conda create -p $JUPYTER_ENV_DIR python=3.8
 
 # Instala los paquetes necesarios
-$MINICONDA_BIN_DIR/conda install -p $JUPYTER_ENV_DIR -c conda-forge jupyterhub  notebook jupyterlab 
+$MINICONDA_BIN_DIR/conda install -p $JUPYTER_ENV_DIR -c conda-forge jupyterhub jupyterlab jupyter-hdfscm -y
 
 # Instala PySpark
 $MINICONDA_BIN_DIR/conda install -p $JUPYTER_ENV_DIR -c conda-forge pyspark
@@ -55,9 +55,16 @@ $MINICONDA_BIN_DIR/conda install -p $JUPYTER_ENV_DIR -c conda-forge pyspark
 $JUPYTER_ENV_DIR/bin/jupyterhub --generate-config
 sudo mv jupyterhub_config.py $JUPYTER_DIR/
 
+
+sudo echo "c.JupyterHub.bind_url = 'http://:9909'" >> $JUPYTER_DIR/jupyterhub_config.py
+sudo echo "c.JupyterHub.cookie_secret_file = '/opt/jupyterhub/.jupyterhub/jupyterhub_cookie_secret'" >> $JUPYTER_DIR/jupyterhub_config.py
+sudo echo "c.JupyterHub.db_url = 'sqlite:////opt/jupyterhub/.jupyterhub/jupyterhub.sqlite'" >> $JUPYTER_DIR/jupyterhub_config.py
+sudo echo "c.PAMAuthenticator.admin_groups = {'wheel'}" >> $JUPYTER_DIR/jupyterhub_config.py
 sudo echo "c.Spawner.default_url = '/lab'" >> $JUPYTER_DIR/jupyterhub_config.py
 sudo echo "c.Authenticator.admin_users = {'hadoop', 'jupyterhub'}" >> $JUPYTER_DIR/jupyterhub_config.py
 sudo echo "c.LocalAuthenticator.create_system_users = True" >> $JUPYTER_DIR/jupyterhub_config.py
+sudo echo "c.JupyterHub.hub_ip = ''" >> $JUPYTER_DIR/jupyterhub_config.py
+
 
 
 # Configura JupyterHub como un servicio
