@@ -27,23 +27,16 @@ sudo chmod -R 777 /opt/zookeeper
 sudo chmod -R 777 /opt/hadoop
 sudo chmod -R 777 /opt/hbase
 
-
-
-
 # Descargamos e instalamos Hadoop
-
 wget https://dlcdn.apache.org/hadoop/common/hadoop-2.10.2/hadoop-2.10.2.tar.gz
 tar xzf hadoop-2.10.2.tar.gz
 mv  hadoop-2.10.2/* /opt/hadoop
 rm hadoop-2.10.2.tar.gz
 rm -rf hadoop-2.10.2
 
-
-
 #permisos para las carpetas de Hadoop
 sudo chown -R $USER:$USER /opt/hadoop
 sudo chmod -R 777 /opt/hadoop
-
 
 # Descargamos e instalamos Zookeeper
 wget https://dlcdn.apache.org/zookeeper/zookeeper-3.7.1/apache-zookeeper-3.7.1-bin.tar.gz
@@ -51,7 +44,6 @@ tar xzf apache-zookeeper-3.7.1-bin.tar.gz
 mv apache-zookeeper-3.7.1-bin/* /opt/zookeeper
 rm apache-zookeeper-3.7.1-bin.tar.gz
 rm -rf apache-zookeeper-3.7.1-bin
-
 
 #crea el archivo myid en el directorio data de zookeeper segun si es master=1, worker=2 o edge=3
 # Configurar el ID del nodo
@@ -84,8 +76,6 @@ mv hbase-2.4.17/* /opt/hbase
 rm hbase-2.4.17-bin.tar.gz
 rm -rf hbase-2.4.17
 
-
-
 # Verifica si las variables de entorno ya están definidas en el perfil del usuario
 if ! grep -q "JAVA_HOME" ~/.bashrc || ! grep -q "HADOOP_HOME" ~/.bashrc || ! grep -q "HBASE_HOME" ~/.bashrc || ! grep -q "ZOOKEEPER_HOME" ~/.bashrc; then
 # Carga las variables de entorno desde el archivo en el perfil del usuario
@@ -111,8 +101,6 @@ echo 'export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"' >> ~/.ba
 source ~/.bashrc
 fi
 
-
-
 # imprimir el valor de las variables de entorno
 echo "JAVA_HOME: $JAVA_HOME"
 echo "HADOOP_HOME: $HADOOP_HOME"
@@ -120,7 +108,5 @@ echo "HBASE_HOME: $HBASE_HOME"
 echo "ZOOKEEPER_HOME: $ZOOKEEPER_HOME"
 
 source ~/.bashrc
-
-
 echo "Instalación finalizada. Por favor, verifica las variables de entorno y los archivos de configuración."
 

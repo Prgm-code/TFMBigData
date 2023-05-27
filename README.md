@@ -29,6 +29,10 @@ This script sets up the necessary SSH configuration for communication between ma
 
 This script sets environment variables necessary for the correct operation of the Big Data environment.
 
+### `jupyterhub-instalation.sh`
+
+This script is reponsable to install and config a Jupyterhub Service
+
 ## Usage
 
 To deploy the Big Data environment, follow these steps:
