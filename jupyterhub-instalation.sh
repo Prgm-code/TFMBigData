@@ -58,9 +58,10 @@ fi
 
 # Instala JupyterHub y proxy
 pip install jupyterhub jupyterlab
+pip install jupyter-hdfscm
 npm install -g configurable-http-proxy
 
-# Inicia JupyterHub
+# Crea un archivo de configuración de JupyterHub
 sudo touch $JUPYTER_DIR/jupyterhub_config.py
 
 
@@ -74,6 +75,13 @@ sudo echo "c.Spawner.default_url = '/lab'" >> $JUPYTER_DIR/jupyterhub_config.py
 sudo echo "c.Authenticator.admin_users = {'hadoop', 'jupyterhub'}" >> $JUPYTER_DIR/jupyterhub_config.py
 sudo echo "c.LocalAuthenticator.create_system_users = True" >> $JUPYTER_DIR/jupyterhub_config.py
 sudo echo "c.JupyterHub.hub_ip = ''" >> $JUPYTER_DIR/jupyterhub_config.py
+sudo echo "c.HDFSContentsManager.hdfs_host = 'hdfs://192.168.100.246:9000'" >> $JUPYTER_DIR/jupyterhub_config.py
+sudo echo "c.NotebookApp.contents_manager_class = 'hdfscm.HDFSContentsManager'" >> $JUPYTER_DIR/jupyterhub_config.py
+sudo echo "c.HDFSContentsManager.root_dir_template = '/jupyter/notebooks/{username}' " >> $JUPYTER_DIR/jupyterhub_config.py
+
+
+
+
 
 # Configura JupyterHub como un servicio
 echo "[Unit]
